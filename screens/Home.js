@@ -8,6 +8,7 @@ import {
 } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
+import NavOptions from '../components/NavOptions'
 
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
             uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/2560px-Uber_logo_2018.svg.png"
           }}
         />
+        <NavOptions/>
       </View>
     </SafeAreaView>
   )

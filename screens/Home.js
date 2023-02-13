@@ -10,7 +10,6 @@ import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import NavOptions from '../components/NavOptions'
 
-
 const Home = () => {
   return (
     <SafeAreaView style={[tw`bg-white h-full`, styles.container]}>

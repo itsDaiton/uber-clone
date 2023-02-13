@@ -27,7 +27,7 @@ const NavOptions = () => {
     <FlatList
       data={data}
       horizontal
-      keyExtractor={(item) => item.id}
+      keyExtractor={item => item.id}
       contentContainerStyle={{
         flexGrow: 1,
         justifyContent: 'center'

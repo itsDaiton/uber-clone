@@ -9,8 +9,15 @@ import {
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import NavOptions from '../components/NavOptions'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
+import { GOOGLE_MAPS_APIKEY } from '@env'
+import { useDispatch } from 'react-redux'
+import { setOrigin, setDestination } from '../slices/navSlice'
 
 const Home = () => {
+
+  const dispatch = useDispatch()
+
   return (
     <SafeAreaView style={[tw`bg-white h-full`, styles.container]}>
       <View style={tw`p-5`}>
@@ -23,6 +30,30 @@ const Home = () => {
           source={{
             uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/2560px-Uber_logo_2018.svg.png"
           }}
+        />
+        <GooglePlacesAutocomplete
+          styles={{
+            container: {
+              flex: 0,
+            },
+            textInput: {
+              fontSize: 18
+            }
+          }}
+          nearbyPlacesAPI='GooglePlacesSearch'
+          debounce={400}
+          placeholder="Where from?"
+          query={{
+            key: GOOGLE_MAPS_APIKEY,
+            language: 'cs'
+          }}
+          minLength={2}
+          enablePoweredByContainer={false}
+          onPress={(data, details = null) => {
+            console.log(data)
+            console.log(details)
+          }}
+          fetchDetails={true}
         />
         <NavOptions/>
       </View>

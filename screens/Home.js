@@ -44,7 +44,7 @@ const Home = () => {
           placeholder="Where from?"
           query={{
             key: GOOGLE_MAPS_APIKEY,
-            language: 'cs'
+            language: 'en'
           }}
           minLength={2}
           enablePoweredByContainer={false}

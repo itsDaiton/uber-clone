@@ -25,7 +25,7 @@ const NavigateCard = () => {
             styles={toInputBoxStyles}
             query={{
               key: GOOGLE_MAPS_APIKEY,
-              language: "cs"
+              language: "en"
             }}
             enablePoweredByContainer={false}
             onPress={(data, details = null) => {
@@ -37,6 +37,7 @@ const NavigateCard = () => {
               )
               navigation.navigate('RideOptionsCard')
             }}
+            minLength={2}
           />
         </View>
       </View>

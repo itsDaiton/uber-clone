@@ -2,8 +2,7 @@ import {
   Image, 
   Platform, 
   SafeAreaView, 
-  StyleSheet, 
-  Text, 
+  StyleSheet,
   View
 } from 'react-native'
 import React from 'react'
@@ -50,10 +49,12 @@ const Home = () => {
           minLength={2}
           enablePoweredByContainer={false}
           onPress={(data, details = null) => {
-            dispatch(setOrigin({
-              location: details.geometry.location,
-              description: data.description
-            }))
+            dispatch(
+              setOrigin({
+                location: details.geometry.location,
+                description: data.description,
+              })
+            )
             dispatch(setDestination(null))
           }}
           fetchDetails={true}

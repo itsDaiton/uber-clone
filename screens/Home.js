@@ -50,8 +50,11 @@ const Home = () => {
           minLength={2}
           enablePoweredByContainer={false}
           onPress={(data, details = null) => {
-            console.log(data)
-            console.log(details)
+            dispatch(setOrigin({
+              location: details.geometry.location,
+              description: data.description
+            }))
+            dispatch(setDestination(null))
           }}
           fetchDetails={true}
         />

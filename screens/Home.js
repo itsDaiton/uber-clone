@@ -12,6 +12,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { GOOGLE_MAPS_APIKEY } from '@env'
 import { useDispatch } from 'react-redux'
 import { setOrigin, setDestination } from '../slices/navSlice'
+import NavFavorites from '../components/NavFavorites'
 
 const Home = () => {
 
@@ -44,7 +45,7 @@ const Home = () => {
           placeholder="Where from?"
           query={{
             key: GOOGLE_MAPS_APIKEY,
-            language: 'en'
+            language: 'cs'
           }}
           minLength={2}
           enablePoweredByContainer={false}
@@ -60,6 +61,7 @@ const Home = () => {
           fetchDetails={true}
         />
         <NavOptions/>
+        <NavFavorites/>
       </View>
     </SafeAreaView>
   )

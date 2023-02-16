@@ -6,6 +6,7 @@ import { GOOGLE_MAPS_APIKEY } from "@env"
 import { useDispatch } from 'react-redux'
 import { setDestination } from '../slices/navSlice'
 import { useNavigation } from '@react-navigation/native'
+import NavFavorites from './NavFavorites'
 
 const NavigateCard = () => {
 
@@ -14,8 +15,8 @@ const NavigateCard = () => {
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
-      <Text style={tw`text-center py-5 text-xl`}>Good Morning, David.</Text>
-      <View style={tw`border-t border-gray-200 flex-shrink`}>
+      <Text style={tw`text-center pt-5 text-xl`}>Good Morning, David.</Text>
+      <View>
         <View>
           <GooglePlacesAutocomplete
             fetchDetails={true}
@@ -25,7 +26,7 @@ const NavigateCard = () => {
             styles={toInputBoxStyles}
             query={{
               key: GOOGLE_MAPS_APIKEY,
-              language: "en"
+              language: "cs"
             }}
             enablePoweredByContainer={false}
             onPress={(data, details = null) => {
@@ -40,6 +41,7 @@ const NavigateCard = () => {
             minLength={2}
           />
         </View>
+        <NavFavorites/>
       </View>
     </SafeAreaView>
   )
@@ -57,7 +59,7 @@ const toInputBoxStyles = StyleSheet.create({
     backgroundColor: '#DDDDDF',
     borderRadius: 0,
     fontSize: 18,
-    borderRadius: 5
+    borderRadius: 20
   },
   textInputContainer: {
     paddingHorizontal: 20,

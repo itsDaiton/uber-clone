@@ -17,7 +17,12 @@ const MapComponent = () => {
     if (!origin || !destination) return
     const timer = setTimeout(() => {
       mapRef.current.fitToSuppliedMarkers(["origin", "destination"], {
-        edgePadding: { top: 100, right: 50, bottom: 50, left: 50 }
+        edgePadding: { 
+          top: 100,
+          right: 50,
+          bottom: 50,
+          left: 50 
+        }
       })
     }, 10);
     return () => clearTimeout(timer)

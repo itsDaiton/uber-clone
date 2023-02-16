@@ -15,13 +15,7 @@ const data = [
     icon: "briefcase",
     location: "Work",
     destination: "Brno, Česko"
-  },
-  {
-    id: "789",
-    icon: "school",
-    location: "University",
-    destination: "Praha, Česko"
-  },
+  }
 ]
 
 const NavFavorites = () => {

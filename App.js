@@ -39,7 +39,7 @@ export default function App() {
                 options={{
                   headerShown: false,
                 }}
-              />        
+              />     
             </Stack.Navigator>
           </KeyboardAvoidingView>
         </SafeAreaProvider>

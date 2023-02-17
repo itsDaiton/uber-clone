@@ -1,11 +1,19 @@
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { 
+  FlatList, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  View
+} from 'react-native'
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { selectDestination, selectOrigin } from '../slices/navSlice'
+import { selectTravelTimeInfo } from '../slices/navSlice'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import tw from 'tailwind-react-native-classnames'
 import { Icon, Image } from 'react-native-elements'
 import { useNavigation } from '@react-navigation/native'
+import "intl"
+import "intl/locale-data/jsonp/cs-CZ"
 
 const data = [
   {
@@ -28,10 +36,14 @@ const data = [
   },
 ]
 
+const SURGE_CHARGE_RATE = 1.5
+const EXCHANGE_RATE = 26.6
+
 const RideOptionsCard = () => {
 
   const navigation = useNavigation()
   const [selected, setSelected] = useState(null)
+  const travelTimeInfo = useSelector(selectTravelTimeInfo)
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
@@ -42,7 +54,7 @@ const RideOptionsCard = () => {
         >  
           <Icon name='chevron-left' type='font-awesome'/>
         </TouchableOpacity>
-        <Text style={tw`text-center text-xl pb-3`}>Select a Ride</Text>
+        <Text style={tw`text-center text-xl pb-3`}>Select a Ride - {travelTimeInfo?.distance?.text} </Text>
       </View>
       <FlatList
         data={data}
@@ -62,14 +74,25 @@ const RideOptionsCard = () => {
             />
             <View style={tw`-ml-6`}>
               <Text style={tw`text-xl font-semibold`}>{title}</Text>
-              <Text>Travel Time...</Text>
+              <Text>{travelTimeInfo?.duration?.text}</Text>
             </View>
-            <Text style={tw`text-xl`}>99 CZK</Text>
+            <Text style={tw`text-xl`}>
+              {new Intl.NumberFormat('cs-cz', {
+                style: 'currency',
+                currency: 'CZK'
+              }).format(
+                (travelTimeInfo?.duration?.value * SURGE_CHARGE_RATE * multiplier) / 100 * EXCHANGE_RATE
+              )}
+            </Text>
           </TouchableOpacity>
         )}
       />
       <View>
-        <TouchableOpacity style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`} disabled={!selected}>
+        <TouchableOpacity 
+          style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`} 
+          disabled={!selected}
+          onPress={() => navigation.navigate('OrderCard')}
+        >
           <Text style={tw`text-center text-white text-xl`}>Choose {selected?.title}</Text>
         </TouchableOpacity>
       </View>
@@ -78,5 +101,3 @@ const RideOptionsCard = () => {
 }
 
 export default RideOptionsCard
-
-const styles = StyleSheet.create({})

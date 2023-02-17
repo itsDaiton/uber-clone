@@ -61,7 +61,7 @@ const Home = () => {
           fetchDetails={true}
         />
         <NavOptions/>
-        <NavFavorites/>
+        <NavFavorites type='origin'/>
       </View>
     </SafeAreaView>
   )

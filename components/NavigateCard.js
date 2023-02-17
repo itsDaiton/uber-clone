@@ -1,4 +1,10 @@
-import { SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { 
+  SafeAreaView, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity,
+  View 
+} from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
@@ -43,7 +49,7 @@ const NavigateCard = () => {
             minLength={2}
           />
         </View>
-        <NavFavorites/>
+        <NavFavorites type='destination'/>
       </View>
       <View style={tw`flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100`}>
         <TouchableOpacity 
